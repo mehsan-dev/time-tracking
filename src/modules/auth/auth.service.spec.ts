@@ -37,14 +37,14 @@ describe('AuthService', () => {
       username: 'testuser',
       password: hashSync(testPassword, 10),
       id: 1,
-      tweets: [],
+      timeEntries: [],
     };
 
     it('should return user if username and password are correct', async () => {
       usersService.findOne.mockImplementationOnce(() => Promise.resolve(user));
       expect(
         await authService.validateUser(user.username, testPassword),
-      ).toEqual({ id: user.id, username: user.username, tweets: [] });
+      ).toEqual({ id: user.id, username: user.username, timeEntries: [] });
     });
 
     it('should return null if username is incorrect', async () => {
